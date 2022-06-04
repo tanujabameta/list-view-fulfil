@@ -21,10 +21,18 @@ const DataTable = ({ data, columns }) => {
               <td>
                 <input type="checkbox" />
               </td>
-              <td>{item.albumId}</td>
+              <td>{item.id}</td>
               <td>{item.title}</td>
-              <td><img className="url" src={item.url} alt="url"/></td>
-              <td><img className="thumbnailUrl" src={item.thumbnailUrl} alt="thumbnail Url"/></td>
+              <td>
+                <img className="url" src={item.url} alt="url" />
+              </td>
+              <td>
+                <img
+                  className="thumbnailUrl"
+                  src={item.thumbnailUrl}
+                  alt="thumbnail Url"
+                />
+              </td>
             </tr>
           );
         })}

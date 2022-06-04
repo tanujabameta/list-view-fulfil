@@ -1,19 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
-import axios from "axios";
+import useGetPhotos from "./hooks/useGetPhotos";
 import DataTable from "./Components/DataTable/DataTable";
 
 function App() {
-  const [data, setData] = useState([]);
+  const [page, setPage] = useState(1);
 
-  useEffect(() => {
-    (async () => {
-      const result = await axios(
-        "https://jsonplaceholder.typicode.com/photos/"
-      );
-      setData(result.data);
-    })();
-  }, []);
+  const { data, loading } = useGetPhotos(page);
+
+  const scrollToEnd = () => {
+    setPage(page + 1);
+  };
+
+  window.onscroll = function () {
+    if (
+      window.innerHeight + document.documentElement.scrollTop ===
+      document.documentElement.offsetHeight
+    ) {
+      scrollToEnd();
+    }
+  };
 
   const columns = [
     { id: "albumId", label: "Album ID", numeric: true },
@@ -26,6 +32,7 @@ function App() {
     <div className="App">
       <header>List View</header>
       <DataTable data={data} columns={columns} />
+      <div>{loading && "Loading..."}</div>
     </div>
   );
 }
