@@ -1,0 +1,12 @@
+table th {
+  border-bottom: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.alignButton {
+  margin: 5px;
+  border: none;
+  color: #764abc;
+  border-radius: 17%;
+}

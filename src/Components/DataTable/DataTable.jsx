@@ -1,39 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 import "./DataTable.css";
+import TableRow from "../TableRow/TableRow";
+import TableColumn from "../TableColumn/TableColumn";
 
 const DataTable = ({ data, columns }) => {
+  const [toggleAlign, setToggleAlign] = useState(false);
+  const [selected, setSelected] = useState([]);
+
+  const onSelectionChange = (e) => {
+    const { name, checked } = e.target;
+
+    if (name === "allSelect") {
+      console.log(name);
+      setSelected((prev) => [...prev, name]);
+    }
+    setSelected((prev) =>
+      checked ? [...prev, name] : prev.filter((val) => val !== name)
+    );
+    console.log(selected);
+  };
+
+  const changeAlign = () => {
+    setToggleAlign(!toggleAlign);
+  };
+
   return (
     <table>
-      <thead>
-        <tr>
-          <th>
-            <input type="checkbox" />
-          </th>
-          {columns.map((column) => {
-            return <th key={column.id}>{column.label}</th>;
-          })}
-        </tr>
-      </thead>
+      <TableColumn
+        columns={columns}
+        onSelectionChange={onSelectionChange}
+        changeAlign={changeAlign}
+        selected={selected}
+      />
       <tbody>
         {data.map((item) => {
           return (
-            <tr key={item.id}>
-              <td>
-                <input type="checkbox" />
-              </td>
-              <td>{item.id}</td>
-              <td>{item.title}</td>
-              <td>
-                <img className="url" src={item.url} alt="url" />
-              </td>
-              <td>
-                <img
-                  className="thumbnailUrl"
-                  src={item.thumbnailUrl}
-                  alt="thumbnail Url"
-                />
-              </td>
-            </tr>
+            <TableRow
+              key={item.id}
+              item={item}
+              toggleAlign={toggleAlign}
+              selected={selected}
+              onSelectionChange={onSelectionChange}
+            />
           );
         })}
       </tbody>

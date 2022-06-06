@@ -1,0 +1,26 @@
+table td {
+  border-bottom: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+  color: #455a64;
+}
+
+table tr:hover {
+  background-color: rgb(214, 212, 212);
+}
+
+.url {
+  height: 50px;
+  width: 50px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+}
+
+.url:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+.alignRight {
+  text-align: right;
+}

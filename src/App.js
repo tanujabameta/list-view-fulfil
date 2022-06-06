@@ -23,16 +23,25 @@ function App() {
 
   const columns = [
     { id: "albumId", label: "Album ID", numeric: true },
-    { id: "title", label: "Title", numeric: false },
+    {
+      id: "title",
+      label: "Title",
+      numeric: false,
+      // width: "100px",
+    },
     { id: "Url", label: "Url", numeric: false },
-    { id: "thumbnailUrl", label: "ThumbNail Url", numeric: false },
   ];
 
   return (
     <div className="App">
-      <header>List View</header>
+      <header>Table Infinite Scroll</header>
       <DataTable data={data} columns={columns} />
-      <div>{loading && "Loading..."}</div>
+      {loading && (
+        <div className="loader">
+          <span></span>
+          <span></span>
+        </div>
+      )}
     </div>
   );
 }
