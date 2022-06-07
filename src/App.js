@@ -4,12 +4,11 @@ import useGetPhotos from "./hooks/useGetPhotos";
 import DataTable from "./Components/DataTable/DataTable";
 
 function App() {
-  const [page, setPage] = useState(1);
-
-  const { data, loading } = useGetPhotos(page);
+  const [pageNumber, setPageNumber] = useState(1);
+  const { albumList, loading } = useGetPhotos(pageNumber);
 
   const scrollToEnd = () => {
-    setPage(page + 1);
+    setPageNumber(pageNumber + 1);
   };
 
   window.onscroll = function () {
@@ -35,7 +34,7 @@ function App() {
   return (
     <div className="App">
       <header>Table Infinite Scroll</header>
-      <DataTable data={data} columns={columns} />
+      <DataTable albumList={albumList} columns={columns} />
       {loading && (
         <div className="loader">
           <span></span>

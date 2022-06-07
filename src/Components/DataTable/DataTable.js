@@ -3,7 +3,7 @@ import "./DataTable.css";
 import TableRow from "../TableRow/TableRow";
 import TableColumn from "../TableColumn/TableColumn";
 
-const DataTable = ({ data, columns }) => {
+const DataTable = ({ albumList, columns }) => {
   const [toggleAlign, setToggleAlign] = useState(false);
   const [allSelected, setAllSelected] = useState(false);
   const [clearSelection, setClearSelection] = useState(false);
@@ -13,8 +13,8 @@ const DataTable = ({ data, columns }) => {
 
   const onAllSelectionChange = (e) => {
     setAllSelected(e.target.checked);
-    setClearSelection(e.target.checked)
-  }
+    setClearSelection(e.target.checked);
+  };
 
   const changeAlign = () => {
     setToggleAlign(!toggleAlign);
@@ -29,7 +29,7 @@ const DataTable = ({ data, columns }) => {
         selected={allSelected}
       />
       <tbody>
-        {data.map((item) => {
+        {albumList.map((item) => {
           return (
             <TableRow
               key={item.id}
