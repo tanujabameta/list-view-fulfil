@@ -1,7 +1,25 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import "./TableRow.css";
 
-const TableRow = ({ item, toggleAlign, selected, onSelectionChange }) => {
+const TableRow = ({ item, toggleAlign, allSelected, uncheckedRow, clearSelection }) => {
+    const [rowSelected, setRowSelected] = useState(false)
+    const onSelectionChange = (e) => {
+        if(e.target.checked) {
+            setRowSelected(true);
+        } else {
+            setRowSelected(false);
+            uncheckedRow(e.target.name);
+        }
+    }
+
+    useEffect(()=> {
+        setRowSelected(allSelected || rowSelected);
+    }, [allSelected])
+
+    useEffect(()=> {
+        setRowSelected(clearSelection);
+    }, [clearSelection])
+    
   return (
     <tr key={item.id}>
       <td>
@@ -9,7 +27,7 @@ const TableRow = ({ item, toggleAlign, selected, onSelectionChange }) => {
           type="checkbox"
           name={item.id}
           onChange={onSelectionChange}
-          checked={selected.some((value) => value == item.id)}
+          checked={rowSelected}
         />
       </td>
       <td className={toggleAlign ? "alignRight" : null}>{item.id}</td>

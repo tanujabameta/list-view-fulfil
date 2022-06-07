@@ -5,20 +5,16 @@ import TableColumn from "../TableColumn/TableColumn";
 
 const DataTable = ({ data, columns }) => {
   const [toggleAlign, setToggleAlign] = useState(false);
-  const [selected, setSelected] = useState([]);
-
-  const onSelectionChange = (e) => {
-    const { name, checked } = e.target;
-
-    if (name === "allSelect") {
-      console.log(name);
-      setSelected((prev) => [...prev, name]);
-    }
-    setSelected((prev) =>
-      checked ? [...prev, name] : prev.filter((val) => val !== name)
-    );
-    console.log(selected);
+  const [allSelected, setAllSelected] = useState(false);
+  const [clearSelection, setClearSelection] = useState(false);
+  const uncheckedRow = (rowId) => {
+    setAllSelected(false);
   };
+
+  const onAllSelectionChange = (e) => {
+    setAllSelected(e.target.checked);
+    setClearSelection(e.target.checked)
+  }
 
   const changeAlign = () => {
     setToggleAlign(!toggleAlign);
@@ -28,9 +24,9 @@ const DataTable = ({ data, columns }) => {
     <table>
       <TableColumn
         columns={columns}
-        onSelectionChange={onSelectionChange}
+        onAllSelectionChange={onAllSelectionChange}
         changeAlign={changeAlign}
-        selected={selected}
+        selected={allSelected}
       />
       <tbody>
         {data.map((item) => {
@@ -39,8 +35,9 @@ const DataTable = ({ data, columns }) => {
               key={item.id}
               item={item}
               toggleAlign={toggleAlign}
-              selected={selected}
-              onSelectionChange={onSelectionChange}
+              allSelected={allSelected}
+              uncheckedRow={uncheckedRow}
+              clearSelection={clearSelection}
             />
           );
         })}

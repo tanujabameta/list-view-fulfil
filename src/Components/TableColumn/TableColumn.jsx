@@ -1,7 +1,7 @@
 import React from "react";
 import "./TableColumn.css";
 
-const TableColumn = ({ columns, onSelectionChange, changeAlign, selected }) => {
+const TableColumn = ({ columns, onAllSelectionChange, changeAlign, selected }) => {
   return (
     <thead>
       <tr>
@@ -9,8 +9,8 @@ const TableColumn = ({ columns, onSelectionChange, changeAlign, selected }) => {
           <input
             type="checkbox"
             name="allSelect"
-            onChange={onSelectionChange}
-            checked={selected.some(() => true)}
+            onChange={onAllSelectionChange}
+            checked={selected}
           />
         </th>
         {columns.map((column) => {
