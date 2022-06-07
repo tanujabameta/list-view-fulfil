@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/list-view-fulfil/static/css/main.27af0e8c.css",
-    "main.js": "/list-view-fulfil/static/js/main.185d92bd.js",
-    "static/js/787.2cc0687f.chunk.js": "/list-view-fulfil/static/js/787.2cc0687f.chunk.js",
-    "index.html": "/list-view-fulfil/index.html",
-    "main.27af0e8c.css.map": "/list-view-fulfil/static/css/main.27af0e8c.css.map",
-    "main.185d92bd.js.map": "/list-view-fulfil/static/js/main.185d92bd.js.map",
-    "787.2cc0687f.chunk.js.map": "/list-view-fulfil/static/js/787.2cc0687f.chunk.js.map"
+    "main.css": "/table-infinite-scroll/static/css/main.27af0e8c.css",
+    "main.js": "/table-infinite-scroll/static/js/main.3ef04bec.js",
+    "static/js/787.2cc0687f.chunk.js": "/table-infinite-scroll/static/js/787.2cc0687f.chunk.js",
+    "index.html": "/table-infinite-scroll/index.html",
+    "main.27af0e8c.css.map": "/table-infinite-scroll/static/css/main.27af0e8c.css.map",
+    "main.3ef04bec.js.map": "/table-infinite-scroll/static/js/main.3ef04bec.js.map",
+    "787.2cc0687f.chunk.js.map": "/table-infinite-scroll/static/js/787.2cc0687f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.27af0e8c.css",
-    "static/js/main.185d92bd.js"
+    "static/js/main.3ef04bec.js"
   ]
 }
