@@ -5,15 +5,13 @@ import DataTable from "./Components/DataTable/DataTable";
 
 function App() {
   const [pageNumber, setPageNumber] = useState(1);
-  const { albumList, loading } = useGetPhotos(pageNumber);
+  const { albumList, loading, hasMoreAlbum } = useGetPhotos(pageNumber);
 
-  const scrollToEnd = () => {
-    setPageNumber(pageNumber + 1);
-  };
+  const scrollToEnd = () => hasMoreAlbum && setPageNumber(pageNumber + 1);
 
   window.onscroll = function () {
     if (
-      window.innerHeight + document.documentElement.scrollTop ===
+      window.innerHeight + document.documentElement.scrollTop >=
       document.documentElement.offsetHeight
     ) {
       scrollToEnd();
@@ -35,7 +33,7 @@ function App() {
     <div className="App">
       <header>Table Infinite Scroll</header>
       <DataTable albumList={albumList} columns={columns} />
-      {loading && (
+      {loading && hasMoreAlbum && (
         <div className="loader">
           <span></span>
           <span></span>

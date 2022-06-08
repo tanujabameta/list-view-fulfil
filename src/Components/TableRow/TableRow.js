@@ -9,6 +9,7 @@ const TableRow = ({
   clearSelection,
 }) => {
   const [rowSelected, setRowSelected] = useState(false);
+  
   const onSelectionChange = (e) => {
     if (e.target.checked) {
       setRowSelected(true);

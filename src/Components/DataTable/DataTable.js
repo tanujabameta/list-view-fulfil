@@ -7,18 +7,15 @@ const DataTable = ({ albumList, columns }) => {
   const [toggleAlign, setToggleAlign] = useState(false);
   const [allSelected, setAllSelected] = useState(false);
   const [clearSelection, setClearSelection] = useState(false);
-  const uncheckedRow = (rowId) => {
-    setAllSelected(false);
-  };
+
+  const uncheckedRow = () => setAllSelected(false);
 
   const onAllSelectionChange = (e) => {
     setAllSelected(e.target.checked);
     setClearSelection(e.target.checked);
   };
 
-  const changeAlign = () => {
-    setToggleAlign(!toggleAlign);
-  };
+  const changeAlign = () => setToggleAlign(!toggleAlign);
 
   return (
     <table>
